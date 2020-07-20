@@ -1,0 +1,23 @@
+{
+  "name": "@freight-trust/ftcli",
+  "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "tsc -b packages/*",
+    "test": "lerna run test",
+    "clean": "rimraf packages/**/lib"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@types/node": "^13.11.0",
+    "lerna": "^3.20.2",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "rimraf": "^3.0.2"
+  },
+  "license": "MIT",
+  "version": "0.2.0"
+}
