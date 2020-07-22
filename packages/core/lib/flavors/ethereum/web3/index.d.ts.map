@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../../src/flavors/ethereum/web3/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,QAAQ,EAAC,MAAM,cAAc,CAAC;AAEtC,MAAM,CAAC,OAAO,OAAO,IAAI;IACvB,UAAU,EAAE,QAAQ,CAAC;gBAET,UAAU,EAAE,QAAQ;IAI1B,aAAa;IAIb,IAAI;CAGX"}

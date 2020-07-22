@@ -16,6 +16,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "oclif": "^1.16.1",
     "rimraf": "^3.0.2"
   },
   "license": "MIT",
