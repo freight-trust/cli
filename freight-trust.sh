@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 # MIT License
 #
 # Copyright (c) 2020 FreightTrust and Clearing Corporation
-#version 0.2.0-a
+#version 0.2.2-a
 cli_version=${1:-$(curl https://raw.githubusercontent.com/freight-trust/cli/master/latest)}
 installed_flag=0
 installed_version=""
@@ -34,18 +34,20 @@ setup_color() {
 }
 
 # TODO : Integrate GPG Keycheck
+# NOTE: reference URL just in case
+# https://github.com/freight-trust/cli/releases/download/v0.2.2/freight-trust-cli_v0.2.2.tar
 
 install_cli() {
   echo "Downloading Freight Trust Command Line Interface ..."
   mkdir -p "$HOME/.ftcli"
-  if [ "$(curl --write-out "%{http_code}" --silent --output /dev/null "https://github.com/freight-trust/cli/releases/download/v${cli_version}/cli-${cli_version}.tar")" -eq 302 ]; then
-    curl -# -L -o "$HOME/.ftcli/cli-${cli_version}.tar" "https://github.com/cli/cli-cli/releases/download/v${cli_version}/cli-${cli_version}.tar"
+  if [ "$(curl --write-out "%{http_code}" --silent --output /dev/null "https://github.com/freight-trust/cli/releases/download/${cli_version}/freight-trust-cli_${cli_version}.tar")" -eq 302 ]; then
+    curl -# -L -o "$HOME/.ftcli/freight-trust-cli_${cli_version}.tar" "https://github.com/freight-trust/cli/releases/download/${cli_version}/freight-trust-cli_${cli_version}.tar"
     echo "Installing cli..."
-    tar -xf "$HOME/.ftcli/cli-${cli_version}.tar" -C "$HOME/.ftcli"
+    tar -xf "$HOME/.ftcli/freight-trust-cli_${cli_version}.tar" -C "$HOME/.ftcli"
     echo "export PATH=\$PATH:$HOME/.ftcli" >"$HOME/.ftcli/source.sh"
     chmod +x "$HOME/.ftcli/source.sh"
     echo "Removing downloaded archive..."
-    rm "$HOME/.ftcli/cli-${cli_version}.tar"
+    rm "$HOME/.ftcli/freight-trust-cli_${cli_version}.tar"
   else
     echo "WARNING - Build Error, Aborting..."
     exit 0
@@ -137,13 +139,13 @@ source_cli() {
 clean_up() {
   if [ -d "$HOME/.ftcli" ]; then
     rm -f "$HOME/.ftcli/source.sh"
-    rm -rf "$HOME/.ftcli/cli-$installed_version" >/dev/null 2>&1
+    rm -rf "$HOME/.ftcli/freight-trust-cli_$installed_version" >/dev/null 2>&1
     echo "WARNING Deleting older installation ..."
   fi
 }
 
 completed() {
-  ln -sf "$HOME/.ftcli/cli-$cli_version/bin/cli" $HOME/.ftcli/cli
+  ln -sf "$HOME/.ftcli/freight-trust-cli_$cli_version/bin/cli" $HOME/.ftcli/cli
   printf '\n'
   printf "$GREEN" 
   echo "Freight Trust Command Line Interface has been succesfully installed."
@@ -152,7 +154,7 @@ completed() {
   echo "When you open a new shell this will be performed automatically."
   echo "To see what cli's CLI can do you can check the documentation bellow."
   echo "https://ft-docs.netlify.app/command-line/ "
-  echo "Connecting to the network... .... ...  " # TODO integration with choice to abort!
+  echo "Connecting to the network... ....   " # TODO integration with choice to abort!
   printf "$RESET" 
   exit 0
 }
@@ -161,7 +163,7 @@ main() {
   setup_color
   check_if_installed
   if [ $installed_flag -eq 1 ]; then
-    check_if_cli_homebrew
+#    check_if_cli_homebrew TODO @dev integrate with homebrew down the line if requested 'placeholder'
     check_version
     clean_up
     install_cli
