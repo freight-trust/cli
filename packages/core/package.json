@@ -1,0 +1,28 @@
+{
+  "name": "@freight-trust/core",
+  "version": "0.2.0",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "author": "SEE LICENSE",
+  "repository": "freight-trust/ftcli",
+  "homepage": "https://github.com/freight-trust/cli",
+  "bugs": "https://github.com/freight-trust/cli/issues",
+  "scripts": {
+    "start": "node ./build/index.js",
+    "build": "yarn run rmDist && yarn run compile",
+    "rmDist": "rm -rf ./dist",
+    "clean": "rm -rf ./node_modules ./dist",
+    "compile": "tsc -p tsconfig.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "@types/ws": "^7.2.3",
+    "got": "^10.7.0",
+    "ws": "^7.2.3"
+  }
+}
