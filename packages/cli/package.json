@@ -1,7 +1,7 @@
 {
   "name": "@freight-trust/cli",
   "description": "",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "author": "",
   "bin": {
     "ftcli": "./bin/run"
