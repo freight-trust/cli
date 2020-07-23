@@ -4,14 +4,14 @@ describe('eth:accounts', () => {
   test
   .stdout()
   .command(['eth:accounts'])
-  .it('runs hello', ctx => {
-    expect(ctx.stdout).to.contain('hello world')
+  .it('runs start', ctx => {
+    expect(ctx.stdout).to.contain('start commands')
   })
 
   test
   .stdout()
-  .command(['eth:accounts', '--name', 'jeff'])
-  .it('runs hello --name jeff', ctx => {
-    expect(ctx.stdout).to.contain('hello jeff')
+  .command(['eth:accounts', '--name', 'besu'])
+  .it('runs start --name besu', ctx => {
+    expect(ctx.stdout).to.contain('start besu')
   })
 })
