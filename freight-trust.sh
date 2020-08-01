@@ -40,14 +40,14 @@ setup_color() {
 install_cli() {
   echo "Downloading Freight Trust Command Line Interface ..."
   mkdir -p "$HOME/.ftcli"
-  if [ "$(curl --write-out "%{http_code}" --silent --output /dev/null "https://github.com/freight-trust/cli/releases/download/${cli_version}/freight-trust-cli_${cli_version}.tar")" -eq 302 ]; then
+  if [ "$(curl --write-out "%{http_code}" --silent --output /dev/null "https://github.com/freight-trust/cli/releases/download/$cli_version/freight-trust-cli_$cli_version.tar")" -eq 302 ]; then
     curl -# -L -o "$HOME/.ftcli/freight-trust-cli_${cli_version}.tar" "https://github.com/freight-trust/cli/releases/download/${cli_version}/freight-trust-cli_${cli_version}.tar"
     echo "Installing cli..."
-    tar -xf "$HOME/.ftcli/freight-trust-cli_${cli_version}.tar" -C "$HOME/.ftcli"
+    tar -xf "$HOME/.ftcli/freight-trust-cli_$cli_version.tar" -C "$HOME/.ftcli"
     echo "export PATH=\$PATH:$HOME/.ftcli" >"$HOME/.ftcli/source.sh"
     chmod +x "$HOME/.ftcli/source.sh"
     echo "Removing downloaded archive..."
-    rm "$HOME/.ftcli/freight-trust-cli_${cli_version}.tar"
+    rm "$HOME/.ftcli/freight-trust-cli_$cli_version.tar"
   else
     echo "WARNING - Build Error, Aborting..."
     exit 0
@@ -71,7 +71,7 @@ get_user_input() {
 check_version() {
   installed_version=$(cli version | grep Version | awk -F" " '{print $NF}')
   if [ "$installed_version" = "$cli_version" ]; then
-      echo "You have the latest version of @freight-trust/cli (${installed_version}). Exiting."
+      echo "You have the latest version of @freight-trust/cli ($installed_version). Exiting."
       exit 0
     else
       echo "Notification: @freight-trust/cli version is NOT up to date. (latest stable)"
@@ -83,53 +83,53 @@ source_cli() {
   SOURCE_cli="\n[ -s \"$HOME/.ftcli/source.sh\" ] && source \"$HOME/.ftcli/source.sh\""
   if [ -f "$HOME/.bashrc" ]; then
     bash_rc="$HOME/.bashrc"
-    touch "${bash_rc}"
-    if ! grep -qc '.ftcli/source.sh' "${bash_rc}"; then
-      echo "Adding source string to ${bash_rc}"
-      printf "${SOURCE_cli}\n" >>"${bash_rc}"
+    touch "$bash_rc"
+    if ! grep -qc '.ftcli/source.sh' "$bash_rc"; then
+      echo "Adding source string to $bash_rc"
+      printf "$SOURCE_cli\n" >>"$bash_rc"
     else
-      echo "Skipped update of ${bash_rc} (source string already present)"
+      echo "Skipped update of $bash_rc (source string already present)"
     fi
   fi
   if [ -f "$HOME/.bash_profile" ]; then
-    bash_profile="${HOME}/.bash_profile"
-    touch "${bash_profile}"
-    if ! grep -qc '.ftcli/source.sh' "${bash_profile}"; then
-      echo "Adding source string to ${bash_profile}"
-      printf "${SOURCE_cli}\n" >>"${bash_profile}"
+    bash_profile="$HOME/.bash_profile"
+    touch "$bash_profile"
+    if ! grep -qc '.ftcli/source.sh' "$bash_profile"; then
+      echo "Adding source string to $bash_profile"
+      printf "$SOURCE_cli\n" >>"$bash_profile"
     else
-      echo "Skipped update of ${bash_profile} (source string already present)"
+      echo "Skipped update of $bash_profile (source string already present)"
     fi
   fi
   if [ -f "$HOME/.bash_login" ]; then
     bash_login="$HOME/.bash_login"
-    touch "${bash_login}"
-    if ! grep -qc '.ftcli/source.sh' "${bash_login}"; then
-      echo "Adding source string to ${bash_login}"
-      printf "${SOURCE_cli}\n" >>"${bash_login}"
+    touch "$bash_login"
+    if ! grep -qc '.ftcli/source.sh' "$bash_login"; then
+      echo "Adding source string to $bash_login"
+      printf "$SOURCE_cli\n" >>"$bash_login"
     else
-      echo "Skipped update of ${bash_login} (source string already present)"
+      echo "Skipped update of $bash_login (source string already present)"
     fi
   fi
   if [ -f "$HOME/.profile" ]; then
     profile="$HOME/.profile"
-    touch "${profile}"
-    if ! grep -qc '.ftcli/source.sh' "${profile}"; then
-      echo "Adding source string to ${profile}"
-      printf "$SOURCE_cli\n" >>"${profile}"
+    touch "$profile"
+    if ! grep -qc '.ftcli/source.sh' "$profile"; then
+      echo "Adding source string to $profile"
+      printf "$SOURCE_cli\n" >>"$profile"
     else
-      echo "Skipped update of ${profile} (source string already present)"
+      echo "Skipped update of $profile (source string already present)"
     fi
   fi
 
   if [ -f "$(command -v zsh 2>/dev/null)" ]; then
     file="$HOME/.zshrc"
-    touch "${file}"
-    if ! grep -qc '.ftcli/source.sh' "${file}"; then
-      echo "Adding source string to ${file}"
-      printf "$SOURCE_cli\n" >>"${file}"
+    touch "$file"
+    if ! grep -qc '.ftcli/source.sh' "$file"; then
+      echo "Adding source string to $file"
+      printf "$SOURCE_cli\n" >>"$file"
     else
-      echo "Skipped update of ${file} (source string already present)"
+      echo "Skipped update of $file (source string already present)"
     fi
   fi
 }
@@ -145,7 +145,7 @@ clean_up() {
 }
 
 completed() {
-  ln -sf "$HOME/.ftcli/freight-trust-cli_$cli_version/bin/cli" $HOME/.ftcli/cli
+  ln -sf "$HOME/.ftcli/freight-trust-cli_$cli_version/bin/cli" "$HOME"/.ftcli/cli
   printf '\n'
   printf "$GREEN" 
   echo "Freight Trust Command Line Interface has been succesfully installed."
@@ -162,7 +162,7 @@ completed() {
 main() {
   setup_color
   check_if_installed
-  if [ $installed_flag -eq 1 ]; then
+  if [ "$installed_flag" -eq 1 ]; then
 #    check_if_cli_homebrew TODO @dev integrate with homebrew down the line if requested 'placeholder'
     check_version
     clean_up
