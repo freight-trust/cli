@@ -28,7 +28,7 @@ export default class Repl extends Command {
       },
     };
 
-    const myRepl = start('$wirl > ');
+    const myRepl = start('$ftl > ');
     Object.assign(myRepl.context, state);
   }
 

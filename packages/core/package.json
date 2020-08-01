@@ -1,6 +1,6 @@
 {
   "name": "@freight-trust/core",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "main": "lib/index.js",
   "license": "MIT",
   "author": "SEE LICENSE",
@@ -8,7 +8,7 @@
   "homepage": "https://github.com/freight-trust/cli",
   "bugs": "https://github.com/freight-trust/cli/issues",
   "scripts": {
-    "start": "node ./build/index.js",
+    "start": "node ./lib/index.js",
     "build": "yarn run rmDist && yarn run compile",
     "rmDist": "rm -rf ./dist",
     "clean": "rm -rf ./node_modules ./dist",
@@ -18,11 +18,11 @@
     "access": "public"
   },
   "devDependencies": {
-    "typescript": "^3.7.2"
+    "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@types/ws": "^7.2.3",
-    "got": "^10.7.0",
-    "ws": "^7.2.3"
+    "@types/ws": "^7.2.6",
+    "got": "^11.5.1",
+    "ws": "^7.3.1"
   }
 }

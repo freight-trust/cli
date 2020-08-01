@@ -1,7 +1,7 @@
 {
   "name": "@freight-trust/cli",
   "description": "",
-  "version": "0.2.0",
+  "version": "0.2.4",
   "author": "",
   "bin": {
     "ftcli": "./bin/run"
@@ -11,12 +11,12 @@
   },
   "bugs": "https://github.com/freight-trust/cli",
   "dependencies": {
+    "@freight-trust/core": "^0.2.3",
     "@oclif/command": "^1",
     "@oclif/config": "^1",
     "@oclif/plugin-autocomplete": "^0.1.5",
     "@oclif/plugin-help": "^2",
     "@oclif/plugin-plugins": "^1.7.9",
-    "@freight-trust/core": "0.0.0",
     "@types/inquirer": "^6.5.0",
     "@types/mkdirp": "^1.0.0",
     "conf": "^6.2.4",
