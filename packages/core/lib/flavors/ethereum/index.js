@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", {value : true});
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.WEB3 = exports.SHH = exports.NET = exports.ETH = exports.DB = void 0;
 const tslib_1 = require("tslib");
 const db_1 = tslib_1.__importDefault(require("./db"));

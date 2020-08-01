@@ -1,17 +1,17 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", {value : true});
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.ftcli = void 0;
 const tslib_1 = require("tslib");
 const ethereum_1 = require("./flavors/ethereum");
 const rpc_1 = tslib_1.__importDefault(require("./rpc"));
 class ftcli {
-  constructor(host = 'http://0.0.0.0', port = 8545) {
+  constructor(host = "http://0.0.0.0", port = 8545) {
     this.connection(host, port);
     this.enableEthereum();
   }
   connection(host, port) {
     this.provider = {
-      rpc : new rpc_1.default(host, port),
+      rpc: new rpc_1.default(host, port),
     };
     return this.provider;
   }
