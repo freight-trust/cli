@@ -1,10 +1,7 @@
 # Freight Trust & Clearing
 
-
-
-
 <!-- COPYRIGHT 2020 - FREIGHTTRUST AND CLEARING CORPORATION
-        ALL RIGHTS RESERVED 
+        ALL RIGHTS RESERVED
     -->
 <!-- FREIGHT TRUST HEADER AREA DEFAULTS  -->
 <!-- FREIGHT TRUST BANNER IMAGE -->
@@ -25,7 +22,4 @@
 <!-- Badges End -->
 <!-- FREIGHT TRUST HEADER AREA DEFAULTS END -->
 
-
-
-
-## Overview 
+## Overview
