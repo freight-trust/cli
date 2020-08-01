@@ -54,16 +54,16 @@ install_cli() {
   fi
 }
 get_user_input() {
-  while echo "Would you like to update cli [Y/n]" && read -r user_input </dev/tty ; do
+  while echo "Would you like to update cli [Y/n]" && read -r user_input </dev/tty; do
     case $user_input in
-    n)
-      echo "Ejecting instalation ..."
-      exit 0
-      ;;
-    *)
-       echo "Updating @freight-trust/cli ..."
-       break
-       ;;
+      n)
+        echo "Ejecting instalation ..."
+        exit 0
+        ;;
+      *)
+        echo "Updating @freight-trust/cli ..."
+        break
+        ;;
     esac
   done
 }
@@ -71,11 +71,11 @@ get_user_input() {
 check_version() {
   installed_version=$(cli version | grep Version | awk -F" " '{print $NF}')
   if [ "$installed_version" = "$cli_version" ]; then
-      echo "You have the latest version of @freight-trust/cli ($installed_version). Exiting."
-      exit 0
-    else
-      echo "Notification: @freight-trust/cli version is NOT up to date. (latest stable)"
-      get_user_input
+    echo "You have the latest version of @freight-trust/cli ($installed_version). Exiting."
+    exit 0
+  else
+    echo "Notification: @freight-trust/cli version is NOT up to date. (latest stable)"
+    get_user_input
   fi
 }
 
@@ -147,7 +147,7 @@ clean_up() {
 completed() {
   ln -sf "$HOME/.ftcli/freight-trust-cli_$cli_version/bin/cli" "$HOME"/.ftcli/cli
   printf '\n'
-  printf "$GREEN" 
+  printf "$GREEN"
   echo "Freight Trust Command Line Interface has been succesfully installed."
   echo "To use cli in your current shell run:"
   echo "source \$HOME/.ftcli/source.sh"
@@ -155,7 +155,7 @@ completed() {
   echo "To see what cli's CLI can do you can check the documentation bellow."
   echo "https://ft-docs.netlify.app/command-line/ "
   echo "Connecting to the network... ....   " # TODO integration with choice to abort!
-  printf "$RESET" 
+  printf "$RESET"
   exit 0
 }
 
@@ -163,7 +163,7 @@ main() {
   setup_color
   check_if_installed
   if [ "$installed_flag" -eq 1 ]; then
-#    check_if_cli_homebrew TODO @dev integrate with homebrew down the line if requested 'placeholder'
+    #    check_if_cli_homebrew TODO @dev integrate with homebrew down the line if requested 'placeholder'
     check_version
     clean_up
     install_cli
@@ -172,7 +172,7 @@ main() {
   else
     install_cli
     source_cli
-    completed    
+    completed
   fi
 }
 
